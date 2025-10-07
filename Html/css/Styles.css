@@ -1,0 +1,221 @@
+:root{
+  --frame-radius: 36.29px;
+  --frame-border: 1.81px;
+  --frame-border-color: rgba(255,255,255,0.11);
+
+  --bg-outer: #8ea0c5; 
+  --bg-1: #11161c; 
+  --bg-2: #0b0f14;
+
+  --ghost-text: rgba(202,209,255,0.20); 
+  --white: #ffffff;
+
+  --title-size: 54.44px;
+  --copy-size: 18.15px; 
+  --btn-h: 54.44px;
+  --btn-w: 188.73px;
+  --btn-radius: 36.29px;
+  --btn-bg: #ffeded;
+  --btn-text: #1b1f26;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Montserrat",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background: var(--bg-outer);
+  color: var(--white);
+}
+
+.stage{
+  max-width: 1320px;/
+  margin: 40px auto;
+  background: radial-gradient(140% 120% at 70% 25%, var(--bg-1) 0%, var(--bg-2) 70%);
+  border: var(--frame-border) solid var(--frame-border-color);
+  border-radius: var(--frame-radius);
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 48px;
+}
+
+.topbar{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 18px 28px 16px;
+}
+
+.brand{
+  font-weight:700;
+  font-size: 32px;
+  letter-spacing: .02em;
+  color: var(--white);
+  text-decoration:none;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 40px;
+}
+
+.nav a{
+  color: var(--white);
+  text-decoration:none;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: .04em;
+}
+
+.cart{
+  display:inline-flex;
+  width: 24px;
+  height: 24px;
+  align-items:center;
+  justify-content:center;
+  opacity:.95;
+}
+.cart img{width:100%; height:100%; display:block}
+
+.hairline{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height: var(--frame-border);
+  background: var(--frame-border-color);
+}
+
+.hero{
+  position: relative;
+  padding: 64px 28px 80px;
+  text-align:center;
+}
+
+.word-drone{
+  position:absolute;
+  inset:auto 28px 0 28px;
+  top: 72px;
+  font-weight: 700;
+  font-size: clamp(140px, 22vw, 300px);
+  letter-spacing: .06em;
+  line-height: 1;
+  color: var(--ghost-text);
+  user-select: none;
+  pointer-events: none;
+}
+
+.blur-ellipse{
+  position:absolute;
+  width: 1055px;
+  height: 1055px;
+  left: 20px;
+  top: -290px;
+  transform: rotate(18deg);
+  background: #292e34;
+  filter: blur(306px);
+  opacity: .75;
+  pointer-events:none;
+}
+
+/* Дрон у центрі */
+.drone-img{
+  position: relative;
+  width: clamp(720px, 62vw, 1123.28px);
+  aspect-ratio: 1123.28 / 366.56;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 16px;
+}
+
+/* Заголовок */
+.title{
+  margin: 24px 0 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: clamp(28px, 4.2vw, var(--title-size));
+  letter-spacing: .03em;
+}
+
+/* Опис */
+.lead{
+  margin: 0 auto 28px;
+  max-width: 605.19px;
+  font-weight: 500;
+  font-size: var(--copy-size);
+  line-height: 1;
+  color: #fff;
+  opacity: .92;
+}
+
+/* Кнопка */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width: var(--btn-w);
+  height: var(--btn-h);
+  border-radius: var(--btn-radius);
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing:.02em;
+  text-decoration:none;
+  box-shadow: 0 8px 22px rgba(0,0,0,.25);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 28px rgba(0,0,0,.35); }
+.btn:active{ transform: translateY(0); box-shadow: 0 6px 16px rgba(0,0,0,.25); }
+
+.rail{
+  position:absolute;
+  top: 160px;
+  right: 26px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 12px;
+}
+.rail-label{
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  opacity:.85;
+}
+.rail-label.small{ font-size: 11px; opacity:.75; }
+.rail-line{
+  width: 2px;
+  height: 180px;
+  background: rgba(255,255,255,.4);
+  position: relative;
+  border-radius: 1px;
+}
+.rail-dot{
+  position:absolute;
+  top: 22px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left:-5px;
+  border: 2px solid #fff;
+  border-radius:50%;
+  background: transparent;
+}
+
+@media (max-width: 960px){
+  .nav{ gap: 22px; }
+  .rail{ right: 10px; }
+}
+@media (max-width: 720px){
+  .brand{ font-size: 26px; }
+  .nav a:nth-child(-n+4){ display:none; }
+  .stage{ margin: 16px; }
+  .word-drone{ font-size: clamp(120px, 30vw, 220px); top: 88px; }
+  .drone-img{ width: min(86vw, 860px); }
+}
